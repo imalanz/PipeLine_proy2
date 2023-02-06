@@ -74,7 +74,7 @@ def db_concat (lst1, lst2, lst3):
     df3 = pd.DataFrame(df3[0].values.reshape(-1, 2), columns=['nutrients', 'info'])
     #concatinate the 3 database in 1
     return pd.concat([df1, df2, df3], axis=0)
-
+    
 
 # create individual lists searching for the disease in each text.
 def diseases (x):
@@ -98,10 +98,12 @@ def df_diseases (lst):
     for i in lst:
         nueva.append("/ ".join(i))
     # making it a data frame.
-    enf = pd.DataFrame(nueva)
-    return enf
+    return pd.DataFrame(nueva)
+
+     
     
 def df_concat (df, enf):
     # para concat las tablas
-    return pd.concat([df, enf ], axis=1, keys=["thiamine (vitamin b1)", "beriberi/ weight loss/ weakness"])
+    return pd.concat([df, enf], axis=1)
+
 
