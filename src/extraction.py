@@ -102,8 +102,10 @@ def df_diseases (lst):
 
      
     
-def df_concat (df, enf):
+def disease_concat (df, enf):
     # para concat las tablas
-    return pd.concat([df, enf], axis=1)
+    x = pd.concat([df, enf], axis=1)
+    x[[]]
+    return 
 
 
