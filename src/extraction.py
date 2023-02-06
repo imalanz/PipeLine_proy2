@@ -16,6 +16,35 @@ def import_csv (url):
     # import data from csv to pandas.
     return pd.read_csv(url)
 
+def delete_food (x):
+    # return the cleaining of columns from "food" data base
+    x.drop(columns = ["food_category_id", "publication_date", "data_type"], inplace=True, axis=1)
+    x.dropna(how="any", inplace=True)
+    return x
+
+def delete_nutrient (x):
+    # return the cleaining of columns from "nutrient" data base
+    x.drop(columns = ["unit_name", "nutrient_nbr", "rank"], inplace= True, axis=1)    
+    x.dropna(how="any", inplace=True)
+    return x
+
+def merge (nutrition, ids, food):
+    # inner merge of the 3 data frames.
+    inner_merge = pd.merge(nutrition, ids, on="nutrient_id", how="inner")
+    usda = pd.merge(inner_merge, food, on="food_id", how="inner")
+    usda = usda[["food", "nutrient", "Per100g", "food_id", "nutrient_id" ]]
+    # cleaning of the ids columns.
+    usda.drop(columns = ["food_id", "nutrient_id"], inplace= True, axis=1)
+    # cleaning the duplicated.
+    return usda
+
+    
+def cleaning_merge (x):    
+    #cleaning duplicates and information
+    x.drop_duplicates(subset=['food', 'nutrient'], keep='first')
+    x["nutrient"] = [i.strip().replace("  ", " ") for i in list(x["nutrient"])]
+    x["food"] = [i.strip().replace("  ", " ") for i in list(x["food"])]
+    return x
 
 
 
@@ -42,7 +71,7 @@ def text_filtered(tags_index):
 
     return y
 
-
+# concat and creat DF 
 def db_concat (lst1, lst2, lst3):
     # crear cada lista a dataframe, se crea en una sola columna
     df1 = pd.DataFrame(lst1)
@@ -55,28 +84,3 @@ def db_concat (lst1, lst2, lst3):
     #concatinate the 3 database in 1
     return pd.concat([df1, df2, df3], axis=0)
 
-def get_name (url):
-    #to get the names of the vitamin from each of the pages.
-    
-        
-    html = requests.get(url)
-    soup = BeautifulSoup(html.content,"html.parser")
-    tags = soup.find_all("h2")
-    x = [i.getText() for i in tags]
-    
-    disease = ["dry skin", "hair loss", "impaired wound healing"]
-    tags = soup.find_all("p")
-    
-    for i in tags:
-        tag_text = i.getText()
-
-    tag_text = tag_text.replace(",", "").strip()
-
- 
-    y = [i for i in disease if i in tag_text]
-
-    return x, y
-
-
-#def get_sickness (nutrient):
-    #to filter the sickness from the text from each title.
