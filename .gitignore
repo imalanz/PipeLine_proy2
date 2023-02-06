@@ -1,0 +1,6 @@
+food_USDA
+.env
+
+USDA_main_csv
+__pycache__/
+src/
