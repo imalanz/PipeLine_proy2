@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 import time
 
 
+
 # USDA data csv. -----------------------------------------------------------
 
 def import_csv (url):
@@ -43,30 +44,6 @@ def merge (nutrition, ids, food):
     usda["nutrient"] = usda["nutrient"].apply(lambda x: x.lower())
     usda["nutrient"] = usda["nutrient"].apply(lambda x: x.split(",")[0])
     return usda
-
-
-def filtering (x):
-    # filter the big df to the only nutrients I wanted to check, from the web scraping.
-    x = (x.loc[(x['nutrient'] == "thiamine") | (x['nutrient'] == "riboflavin") | (x['nutrient'] == "niacin") | (x['nutrient'] == "pantothenic") | (x['nutrient'] == "vitamin b6") | (x['nutrient'] == "biotin") | (x['nutrient'] == "folate") | (x['nutrient'] == "vitamin b12") | (x['nutrient'] == "ascorbic acid") | (x['nutrient'] == "retinol") | (x['nutrient'] == "calciferol") | (x['nutrient'] == "phylloquinone") | (x['nutrient'] == "tocopherol") | (x['nutrient'] == "calcium") | (x['nutrient'] == "iron") | (x['nutrient'] == "magnesium") | (x['nutrient'] == "potassium") | (x['nutrient'] == "zinc") | (x['nutrient'] == "iodine") | (x['nutrient'] == "sodium") | (x['nutrient'] == "phosphorus") | (x['nutrient'] == "manganese")])
-    x = x.drop_duplicates(subset=['food', 'nutrient'], keep='first', inplace= True)
-    return x
-
-
-def groupby (x):
-    # grouped by food, and add a new column count, that is how many nutrients per element has each food.
-    x['nutri_counts'] = x.groupby(['food'])['nutrient'].transform('count')
-    # creating a new column for the sum of the total from the grams of each column, total grams per 100g for each food.
-    x['sum'] = x.groupby(['food'])['Per100g'].transform('sum')
-    return x
-
-
-def for_graphs_lastfilter (df, cantidad_nutrientes, sum_porgramo):
-    # to create the mega filter from the new columns, to create the graphs
-    # put the cuantity of nutrients you want to filter number in floats 0.00 two decimals.
-    df = (df.loc[(df['nutri_counts'] > cantidad_nutrientes)])
-    # put the amount - float - from wich you want to filter and select the most powerful.
-    df = (df.loc[(df['sum'] > sum_porgramo)])
-    return df
 
 
 
@@ -133,8 +110,31 @@ def df_diseases (lst):
     
 def disease_concat (df, enf):
     # para concat las tablas
-    x = pd.concat([df, enf], axis=1)
-    x[[]]
-    return 
+    return  pd.concat([df, enf], axis=1)
+     
 
 
+# Mixing info. -------------------------------------------------------------------
+
+def filtering (x):
+    # filter the big df to the only nutrients I wanted to check, from the web scraping.
+    x = (x.loc[(x['nutrient'] == "thiamine") | (x['nutrient'] == "riboflavin") | (x['nutrient'] == "niacin") | (x['nutrient'] == "pantothenic") | (x['nutrient'] == "vitamin b6") | (x['nutrient'] == "biotin") | (x['nutrient'] == "folate") | (x['nutrient'] == "vitamin b12") | (x['nutrient'] == "ascorbic acid") | (x['nutrient'] == "retinol") | (x['nutrient'] == "calciferol") | (x['nutrient'] == "phylloquinone") | (x['nutrient'] == "tocopherol") | (x['nutrient'] == "calcium") | (x['nutrient'] == "iron") | (x['nutrient'] == "magnesium") | (x['nutrient'] == "potassium") | (x['nutrient'] == "zinc") | (x['nutrient'] == "iodine") | (x['nutrient'] == "sodium") | (x['nutrient'] == "phosphorus") | (x['nutrient'] == "manganese")])
+    x = x.drop_duplicates(subset=['food', 'nutrient'], keep='first', inplace= True)
+    return x
+
+
+def groupby (x):
+    # grouped by food, and add a new column count, that is how many nutrients per element has each food.
+    x['nutri_counts'] = x.groupby(['food'])['nutrient'].transform('count')
+    # creating a new column for the sum of the total from the grams of each column, total grams per 100g for each food.
+    x['sum'] = x.groupby(['food'])['Per100g'].transform('sum')
+    return x
+
+
+def for_graphs_lastfilter (df, cantidad_nutrientes, sum_porgramo):
+    # to create the mega filter from the new columns, to create the graphs
+    # put the cuantity of nutrients you want to filter number in floats 0.00 two decimals.
+    df = (df.loc[(df['nutri_counts'] > cantidad_nutrientes)])
+    # put the amount - float - from wich you want to filter and select the most powerful.
+    df = (df.loc[(df['sum'] > sum_porgramo)])
+    return df
