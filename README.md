@@ -27,28 +27,41 @@ I had to do a lot od cleaning and searching for what it acctualy it was going to
 
 ![duda](https://github.com/imalanz/pipe/blob/main/Imagenes/4.jfif?raw=true) 
 ### 2. Health web scraping.
-I got this information from the Encyclopedia Britannica web page, I started looking for diseases and what acctualy couse them, but at the end I got to a page with complete oposite information, "what nutrient coauses what disease" but it was still a good information. I had to:
+I got this information from the Encyclopedia Britannica web page, I started looking for diseases and what acctualy couse them, but at the end I got to a page with complete oposite information, "what lack of nutrients causes what disease" but it was still a good information. I had to:
 
-- 
-- 
+- Do some web scraping, looking for the texts and the title of the text that in this case it was the acctual nutrient.
+- From that text I had to look for some key words that meant the diseases it self and separete them from the text.
+- Everything put it in an ordered data frame.
 
 
 ![duda](https://github.com/imalanz/pipe/blob/main/Imagenes/8.png?raw=true)  
-## Analizing.
-After we create both tables with the information that we wanted, its time to merge the information to a single dataframe. 
+### 3. Analizing.
+After creating both tables with the information that we wanted, its time to merge the information to a single dataframe. 
+For that I had to do some filtering in the USDA data frame with the nutrients that apear in the diseases table, because we are only focusing on some specific nutrients that causes some diseases. 
+
+After filtering, I created a formula that filters more the big data frame to some specific parameters, that you can choose puting them in the formula and the output will be the filter table with the parameters you input
+From those filtered information I created graphics to analize clearly the information.
+
 
 ![visual](https://github.com/imalanz/PipeLine_proy2/blob/main/Imagenes/output.png?raw=true)  
 
+1. we can see the foods with the most cuantity of nutrients, more than 14 diferent types of nutrients, and how many grams in total they have. 
+it looks that the butter has the most of them. 
 
+
+2. A list of food with no more than 12 different types of nutrients and more than 10,000 amount of grams, this is a more equilibrated graphs and still powerfull foods.
+
+
+3. Can see that the cooked liver food with bread is powerful. and has more than 20,000 grams, but we can see that also the bananas shake or high protein shake its also has good amount of nutrients. 
 
 ![visual](Imagenes/output.png) 
 
-## Conclution. 
+### 4. Conclution. 
 It depends of what acctualy is what we are loocking for, because I can have the aliment with the most number of diferent nutrients but that doesnt mean that it has the most cuantity per grams.
 
-1. the one that has the most number of nutrients is .....
+1. The most powerful food on cuantity of mixed nutrients per 100g is .....
 
-2. the one that has the most cuantity of nutrients per gram is ... with .... number of diferent nutrients
+2. The most equilibrated food by the number of nutrients and the cuantity of grams, that still a high number is ...
 
 
 ![feliz](https://raw.githubusercontent.com/imalanz/pipe/main/Imagenes/healthy%208.avif)  
