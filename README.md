@@ -34,11 +34,21 @@ I got this information from the Encyclopedia Britannica web page, I started look
 
 
 ![duda](https://github.com/imalanz/pipe/blob/main/Imagenes/8.png?raw=true)  
-## Data Visualization.
+## Analizing.
+After we create both tables with the information that we wanted, its time to merge the information to a single dataframe. 
 
+![visual](https://github.com/imalanz/PipeLine_proy2/blob/main/Imagenes/output.png?raw=true)  
+
+
+
+![visual](Imagenes/output.png) 
 
 ## Conclution. 
+It depends of what acctualy is what we are loocking for, because I can have the aliment with the most number of diferent nutrients but that doesnt mean that it has the most cuantity per grams.
 
+1. the one that has the most number of nutrients is .....
+
+2. the one that has the most cuantity of nutrients per gram is ... with .... number of diferent nutrients
 
 
 ![feliz](https://raw.githubusercontent.com/imalanz/pipe/main/Imagenes/healthy%208.avif)  
