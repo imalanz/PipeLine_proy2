@@ -42,19 +42,16 @@ For that I had to do some filtering in the USDA data frame with the nutrients th
 After filtering, I created a formula that filters more the big data frame to some specific parameters, that you can choose puting them in the formula and the output will be the filter table with the parameters you input
 From those filtered information I created graphics to analize clearly the information.
 
-
-![visual](https://github.com/imalanz/PipeLine_proy2/blob/main/Imagenes/output.png?raw=true)  
-
 1. we can see the foods with the most cuantity of nutrients, more than 14 diferent types of nutrients, and how many grams in total they have. 
-it looks that the butter has the most of them. 
+it looks that the butter has the most of them. 2. A list of food with no more than 12 different types of nutrients and more than 10,000 amount of grams, this is a more equilibrated graphs and still powerfull foods.
 
+![visual](https://github.com/imalanz/PipeLine_proy2/blob/main/Imagenes/paint1.jpg?raw=true)  
 
-2. A list of food with no more than 12 different types of nutrients and more than 10,000 amount of grams, this is a more equilibrated graphs and still powerfull foods.
 
 
 3. Can see that the cooked liver food with bread is powerful. and has more than 20,000 grams, but we can see that also the bananas shake or high protein shake its also has good amount of nutrients. 
 
-![visual](Imagenes/output.png) 
+![visual](https://github.com/imalanz/PipeLine_proy2/blob/main/Imagenes/paint2.jpg?raw=true) 
 
 ### 4. Conclution. 
 It depends of what acctualy is what we are loocking for, because I can have the aliment with the most number of diferent nutrients but that doesnt mean that it has the most cuantity per grams.
